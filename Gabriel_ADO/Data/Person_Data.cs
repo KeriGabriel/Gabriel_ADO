@@ -40,5 +40,36 @@ namespace Gabriel_ADO.Data
             }
                 return Masterlist;
         }
+
+        public List<Person> GetPersonDetails(int id)
+        {
+            List<Person> Detaillist = new List<Person>();
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
+                SqlCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "PersonDetails";
+                cmd.Parameters.Add(id);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable DetailsDT = new DataTable();
+
+                connection.Open();
+                adapter.Fill(DetailsDT);
+                connection.Close();
+
+                foreach (DataRow DR in DetailsDT.Rows)
+                {
+                    Detaillist.Add(new Person
+                    {
+                        //PersonID = Convert.ToInt32(DR["ID"]),
+                        FirstName = DR["FirstName"].ToString(),
+                        LastName = DR["LastName"].ToString(),
+                        MiddleName = DR["MiddleName"].ToString()
+
+                    }) ;
+                }
+            }
+            return Detaillist;
+        }
     }
 }
