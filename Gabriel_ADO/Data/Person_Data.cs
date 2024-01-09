@@ -32,7 +32,7 @@ namespace Gabriel_ADO.Data
                 {
                     Masterlist.Add(new Person
                     {
-                        PersonID = Convert.ToInt32(DR["ID"]),
+                        //PersonID = Convert.ToInt32(DR["ID"]),
                         FirstName = DR["FirstName"].ToString(),
                         LastName = DR["LastName"].ToString()
                     }) ;

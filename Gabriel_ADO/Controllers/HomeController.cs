@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gabriel_ADO.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,13 @@ namespace Gabriel_ADO.Controllers
 {
     public class HomeController : Controller
     {
+        Person_Data _data = new Person_Data();
+
+        // GET: Person
         public ActionResult Index()
         {
-            return View();
+            var Personlist = _data.GetMasterList();
+            return View(Personlist);
         }
 
         public ActionResult About()
