@@ -4,11 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Master List</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -29,9 +27,7 @@
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PersonID }) |
             @Html.ActionLink("Details", "Details", new { id=item.PersonID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PersonID })
         </td>
     </tr>
 }
