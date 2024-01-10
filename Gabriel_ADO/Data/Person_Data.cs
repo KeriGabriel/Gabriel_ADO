@@ -67,13 +67,14 @@ namespace Gabriel_ADO.Data
                 foreach (DataRow DR in DetailsDT.Rows)
                 {
                     Detaillist.Add(new Person
-                    {
-                        
+                    {                       
                         PersonID = Convert.ToInt32(DR["BusinessEntityID"]),
                         FirstName = DR["FirstName"].ToString(),
                         LastName = DR["LastName"].ToString(),
-                        MiddleName = DR["MiddleName"].ToString()
-
+                        MiddleName = DR["MiddleName"].ToString(),
+                        Title = DR["Title"].ToString(),
+                        PhoneNumber = DR["PhoneNumber"].ToString(),
+                        Email = DR["EmailAddress"].ToString()
                     }) ;
                 }
             }
