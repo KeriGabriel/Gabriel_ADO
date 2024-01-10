@@ -9,11 +9,10 @@ namespace Gabriel_ADO.Models
 {
     public class Person
     {
-        public int PersonID { get; set; }
-       
+        [DisplayName("Id Number")]
+        public int PersonID { get; set; }      
         [DisplayName ("First Name")]
-        public string FirstName { get; set; }
-        
+        public string FirstName { get; set; }       
         [DisplayName("Last Name")]
         public string LastName { get; set; }
         [DisplayName("Middle Name")]
@@ -25,6 +24,7 @@ namespace Gabriel_ADO.Models
         //public string State { get; set; }
         //public string PostalCode { get; set; }
         public string Email { get; set; }
+        [DisplayName(" Phone Number")]
         public string PhoneNumber { get; set; }
     }
 }
