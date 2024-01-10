@@ -9,7 +9,6 @@ namespace Gabriel_ADO.Models
 {
     public class Person
     {
-        [Key]
         public int PersonID { get; set; }
        
         [DisplayName ("First Name")]

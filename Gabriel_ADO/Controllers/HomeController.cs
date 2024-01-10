@@ -17,7 +17,11 @@ namespace Gabriel_ADO.Controllers
             var Personlist = _data.GetMasterList();
             return View(Personlist);
         }
-
+         public ActionResult Details(int id) 
+        {
+            var details = _data.GetPersonDetails(id);
+            return View(details);
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

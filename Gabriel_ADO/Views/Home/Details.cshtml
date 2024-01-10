@@ -1,11 +1,10 @@
 ﻿@model IEnumerable<Gabriel_ADO.Models.Person>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Details";
 }
 
-<h2>Master List</h2>
-
+<h2>Details</h2>
 
 <table class="table">
     <tr>
@@ -16,7 +15,10 @@
             @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PersonID) 
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
         </th>
         <th></th>
     </tr>
@@ -30,11 +32,12 @@
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PersonID)
+            @Html.DisplayFor(modelItem => item.MiddleName)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", "Home", new { id = item.PersonID }, null) |
+            @Html.DisplayFor(modelItem => item.Title)
         </td>
+
     </tr>
 }
 
