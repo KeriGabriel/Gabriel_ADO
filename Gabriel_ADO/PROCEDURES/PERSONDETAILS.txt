@@ -1,0 +1,41 @@
+﻿USE [AdventureWorks2019]
+GO
+
+/****** Object:  StoredProcedure [dbo].[PersonDetails]    Script Date: 1/9/2024 6:13:07 PM ******/
+DROP PROCEDURE [dbo].[PersonDetails]
+GO
+
+/****** Object:  StoredProcedure [dbo].[PersonDetails]    Script Date: 1/9/2024 6:13:07 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		KERI
+-- Create date: 
+-- Description:	
+-- =============================================
+CREATE PROCEDURE [dbo].[PersonDetails] @id varchar(max)  
+	-- Add the parameters for the stored procedure here
+	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+    -- Insert statements for procedure here
+	SELECT * FROM [Person].[Person]
+	join  [Person].[PersonPhone]
+	on [Person].[PersonPhone].BusinessEntityID = 
+	[Person].[Person].BusinessEntityID
+	join [Person].[EmailAddress]
+	on [Person].[EmailAddress].BusinessEntityID = 
+	[Person].[Person].BusinessEntityID
+
+	where [Person].[Person].BusinessEntityID = @id
+END
+GO
+
+

@@ -1,0 +1,5 @@
+﻿USE [AdventureWorks2019]
+GO
+EXECUTE [dbo].[PersonDetails] 5
+EXECUTE [dbo].[MasterList]
+GO
