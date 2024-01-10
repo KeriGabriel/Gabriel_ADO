@@ -41,20 +41,26 @@ namespace Gabriel_ADO.Data
                 return Masterlist;
         }
 
-        public List<Person> GetPersonDetails(int id)
+        public List<Person> GetPersonDetails(int PersonID)
         {
             List<Person> Detaillist = new List<Person>();
             using (SqlConnection connection = new SqlConnection(conString))
             {
                 
-                SqlCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "PersonDetails";
-                cmd.Parameters.Add(new SqlParameter(id.ToString(), id));
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable DetailsDT = new DataTable();
+                //SqlCommand cmd = connection.CreateCommand();
+                //cmd.CommandType = CommandType.StoredProcedure;
+                //cmd.CommandText = "PersonDetails";
+                //cmd.Parameters.Add(new SqlParameter(PersonID.ToString(), PersonID));
+                //SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                //DataTable DetailsDT = new DataTable();
 
                 connection.Open();
+                SqlCommand cmd = new SqlCommand("PersonDetails", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                //cmd.CommandText = "PersonDetails";
+                cmd.Parameters.Add(new SqlParameter("@id", PersonID));
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable DetailsDT = new DataTable();
                 adapter.Fill(DetailsDT);
                 connection.Close();
 
@@ -63,7 +69,7 @@ namespace Gabriel_ADO.Data
                     Detaillist.Add(new Person
                     {
                         
-                        PersonID = Convert.ToInt32(DR["BusinessEnityID"]),
+                        PersonID = Convert.ToInt32(DR["BusinessEntityID"]),
                         FirstName = DR["FirstName"].ToString(),
                         LastName = DR["LastName"].ToString(),
                         MiddleName = DR["MiddleName"].ToString()
